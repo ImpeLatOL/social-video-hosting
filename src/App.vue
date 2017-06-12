@@ -1,42 +1,70 @@
 <template>
   <div id="app">
-    <navbar></navbar>
-    <div class="container">
-      <div :class="rowClasses">
-        <div class="col-xs-12 col-sm-9">
-          <sidebar-button></sidebar-button>
-          <banner></banner>             
-          <main-content></main-content>
+    <!--menu-->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><router-link to="/">{{mainPageLink}}</router-link></li>
+            <li><router-link to="/addVideo">{{addVideoLink}}</router-link></li>
+            <li><router-link to="/about">{{aboutUsLink}}</router-link></li>
+            <li><router-link to="/login">{{logInLink}}</router-link></li>
+            <!--search-->
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Поиск...">
+              </div>
+              <button type="submit" class="btn btn-default">{{searchButtonText}}</button>
+            </form>  
+            <!--<form class="form-inline">
+              <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </form>-->
+          </ul>
         </div>
-        <sidebar-right></sidebar-right>
       </div>
-    </div>
-    <custom-footer></custom-footer>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import navbar from '../src/assets/components/navbar.vue';
-import banner from '../src/assets/components/banner.vue';
-import customFooter from '../src/assets/components/custom-footer.vue';
-import mainContent from '../src/assets/components/main-content.vue';
-import sidebarButton from '../src/assets/components/sidebar-button.vue';
-import sidebarRight from '../src/assets/components/sidebar-right.vue';
 
 export default {
   name: 'app',
   data () {
     return {
-      rowClasses: "row row-offcanvas row-offcanvas-right",
+      mainPageLink: "Главная",
+      addVideoLink: "Добавить видео",
+      aboutUsLink: "О проекте",
+      logInLink: "Зарегистрироваться",
+      searchButtonText: "Поиск"
     }
   },
   components: {
-    navbar: navbar,
-    banner: banner,
-    mainContent: mainContent,
-    sidebarRight: sidebarRight,
-    sidebarButton: sidebarButton,
-    customFooter: customFooter   
+    //
   }
 }
 </script>
+
+<style>
+
+.inner-class {
+  margin-left: 10px;
+}
+
+.inner-class input.form-control {
+    width: 20%;
+}
+</style>
+

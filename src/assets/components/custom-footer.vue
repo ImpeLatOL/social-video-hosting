@@ -23,3 +23,9 @@
         }
     }
 </script>
+
+<style>
+    footer {
+        margin-left: 15px; 
+    }
+</style>
